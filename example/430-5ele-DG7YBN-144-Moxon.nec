@@ -3,7 +3,7 @@ CE
 SY R1=0.0015	'5ele Yagi elements
 SY R2=0.002	'Moxon Elements
 SY R3=0.00075/2	'Moxon side wire
-SY X0=-0.01	'Moxon origin
+SY X0=0.015	'Moxon origin
 SY A=0.773/2	'Moxon width
 SY B=0.1021	'Moxon upper side
 SY D=X0+0.1473	'Moxon lower side
