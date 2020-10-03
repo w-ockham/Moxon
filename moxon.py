@@ -23,9 +23,8 @@ def moxon(dw,wl):
             'c':round(c*wl,1),'d':round(d*wl,1),
             'e':round(e*wl,1),'note':note}
 
-def showForm():
-    res = '''
-Content-Type:text/html
+def showForm(mesg):
+    res = '''Content-Type:text/html
 
 <html>
 <head>
@@ -33,6 +32,7 @@ Content-Type:text/html
 </head>
 <body>
 <h1> Moxon Calculator </h1>
+<font color="red">''' + mesg + '''</font>
 <form method="post" action='/cgi-bin/moxon.py'>
 <table border="0">
  <tr>
@@ -106,13 +106,16 @@ def main():
     d = form.getvalue('diameter',None)
 
     if f:
-        frequency = float(f)
-        wd = float(d)
-        wl = 299792.5 / frequency
-        dw = wd / wl
-        showResult(frequency,d,moxon(dw,wl))
+        try:
+            frequency = float(f)
+            wd = float(d)
+            wl = 299792.5 / frequency
+            dw = wd / wl
+            showResult(frequency,d,moxon(dw,wl))
+        except:
+            showForm('Invalid Parameter.<br>Input Frequency and Wire Diameter.')
     else:
-        showForm()
+        showForm('Input Frequency and Wire Diameter.')
 
 if __name__ == '__main__':
     main()
